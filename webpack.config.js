@@ -3,7 +3,7 @@ var SRC_DIR = path.join(__dirname, '/client/src');
 var DIST_DIR = path.join(__dirname, '/client/dist');
 
 module.exports = {
-  entry: `${SRC_DIR}/App.jsx`,
+  entry: `${SRC_DIR}/App/App.jsx`,
   output: {
     filename: 'bundle.js',
     path: DIST_DIR
@@ -17,7 +17,11 @@ module.exports = {
         query: {
           presets: ['react', 'env']
        }
-      }
+     },
+     {
+       test: /\.css$/,
+       loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+     },
     ]
   }
 };

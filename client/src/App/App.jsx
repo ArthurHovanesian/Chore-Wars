@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Title from '../Title/Title.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <h1>Chore Wars</h1>
+        <Title />
       </div>
     )
   }

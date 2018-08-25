@@ -1,0 +1,32 @@
+@keyframes modalFade {
+  from {transform: translateY(0);opacity: 0;}
+  to {transform: translateY(0);opacity: 1;}
+}
+
+.outer {
+  animation-name: modalFade;
+  animation-duration: .25s;
+}
+
+.outer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.8);
+  z-index: 999
+}
+
+.inner {
+  position: relative;
+  top: 10%;
+  margin: auto;
+  height: 615px;
+  width: 328px;
+  background-color: white;
+  padding: 24px;
+}

@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SignIn from '../SignIn/SignIn.jsx';
 import Roommates from '../Roommates/Roommates.jsx';
+import Profile from '../Profile/Profile.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -39,7 +41,7 @@ class App extends React.Component {
 
   toggleRoomie(roomie) {
     this.setState({
-      displayRoomie: roomie.name
+      displayRoomie: roomie
     })
   }
 
@@ -56,7 +58,9 @@ class App extends React.Component {
               {choreInfo.roommates.map(roomie => <Roommates roomie={roomie} toggleRoomie={this.toggleRoomie}/>)}
             </div>
             <div>
-              {this.state.displayRoomie}
+              {this.state.displayRoomie
+                && <Profile roomie={this.state.displayRoomie}/>
+              }
             </div>
           </div>
         )}

@@ -3,45 +3,16 @@ import ReactDOM from 'react-dom';
 import styles from './SignIn.css';
 
 const SignIn = ({ toggleSignIn }) => {
-  const stopProp = (event) => {
-    event.stopPropagation();
-  };
 
   return (
-    <div className={styles.outer} onClick={() => toggleSignIn()}>
-      <div className={styles.inner} onClick={stopProp}>
-        <div>
-          <div>
-            <input type="text" className={styles.userInput}/>
-            <span>Username</span>
-          </div>
-          <div>
-            <input type="text" className={styles.userInput}/>
-              <span>Password</span>
-          </div>
-          <button type="button">Sign In</button>
-          <div className={styles.notMember}> Not a member? Sign Up Below!</div>
-          <div>
-            <input type="text" className={styles.userInput}/>
-            <span>Email</span>
-          </div>
-          <div>
-            <input type="text" className={styles.userInput}/>
-            <span>Username</span>
-          </div>
-          <div>
-            <input type="text" className={styles.userInput}/>
-              <span>Password</span>
-          </div>
-          <div>
-            <input type="text" className={styles.userInput}/>
-            <span>Retype Password</span>
-          </div>
-          <button type="button">Register</button>
-        </div>
+    <div className={styles.SignIn}>
+      <div className={styles.EnterHouseName}>Enter House Name</div>
+      <div className={styles.inputField}>
+        <input type="text"/>
+        <button type="button" onClick={() => toggleSignIn()}>Go</button>
       </div>
     </div>
   )
 }
 
-export default SignIn;
+export default SignIn

@@ -1,44 +1,16 @@
-@keyframes modalFade {
-  from {transform: translateY(0);opacity: 0;}
-  to {transform: translateY(0);opacity: 1;}
-}
-
-.outer {
-  animation-name: modalFade;
-  animation-duration: .25s;
-}
-
-.outer {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  background-color: rgba(255,255,255, 0.7);
-  z-index: 999
-}
-
-.inner {
-  position: relative;
-  top: 10%;
-  margin: auto;
-  height: 230px;
-  width: 328px;
-  background-color: white;
-  padding: 24px;
-  border-color: #484848;
+.SignIn {
+  margin: 20% auto;
+  border-color: black;
   border-style: solid;
-  border-width: 1px;
-  box-shadow: 1px 2px 3px #888888
+  width: 300px;
 }
 
-.userInput {
-  margin: 3px 3px;
+.EnterHouseName {
+  text-align: center;
+  font-size: 50px
 }
 
-.notMember {
-  margin-top: 20px
+.inputField {
+  text-align: center;
+  margin-bottom: 10px;
 }

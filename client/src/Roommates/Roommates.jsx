@@ -7,7 +7,6 @@ const Roommates = ({ roomie, toggleRoomie }) => {
   return (
     <div className={styles.roomie} onClick={() => toggleRoomie(roomie)}>
       <div>{roomie.name}</div>
-      <div>{roomie.points}</div>
     </div>
   )
 }

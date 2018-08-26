@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Chore from '../Chore/Chore.jsx';
 import styles from './Profile.css';
 
-const Profile = ({ roomie }) => {
+const Profile = ({ roomie, removeChore }) => {
 
   return (
     <div>
@@ -10,7 +11,10 @@ const Profile = ({ roomie }) => {
         {roomie.name}
       </div>
       <div>
-        {roomie.points}
+        {roomie.points} pts.
+      </div>
+      <div>
+        {roomie.chores.map(chore => <Chore roomie={roomie} chore={chore} removeChore={removeChore}/>)}
       </div>
     </div>
   )

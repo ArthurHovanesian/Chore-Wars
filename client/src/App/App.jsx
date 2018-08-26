@@ -10,6 +10,7 @@ class App extends React.Component {
     super(props);
     this.toggleSignIn = this.toggleSignIn.bind(this);
     this.toggleRoomie = this.toggleRoomie.bind(this);
+    this.removeChore = this.removeChore.bind(this);
     this.state = {
       renderSignIn: true,
       displayRoomie: null,
@@ -17,16 +18,20 @@ class App extends React.Component {
         name: 'AirCnB HQ',
         roommates: [
           {name: 'Diane',
-           points: 36
+           points: 36,
+           chores: ['Clean dishes','Sweep living room','Kill rats']
           },
           {name: 'Edward',
-           points: -628
+           points: -628,
+           chores: ['Scrub toilet with toothbrush','Clean out gutter','Clear out garage','Mow lawn','Take out garbage','Call plumber']
           },
           {name: 'Arthur',
-           points: 592
+           points: 592,
+           chores: ['Dust living room','Mop kitchen floor','Clean oven']
           },
           {name: 'Duss',
-           points: 7
+           points: 7,
+           chores: ['Put dishes back','Tidy furniture','Wash Edward\'s underwear']
           }
         ]
       }
@@ -45,6 +50,22 @@ class App extends React.Component {
     })
   }
 
+  removeChore(roomie, chore) {
+    var copy = Object.assign({}, this.state.choreInfo)
+    for (var i = 0; i < copy.roommates.length; i++) {
+      if (copy.roommates[i] === roomie) {
+        for (var j = 0; j < copy.roommates[i].chores.length; j++) {
+          if (copy.roommates[i].chores[j] === chore) {
+            copy.roommates[i].chores.splice(j, 1);
+          }
+        }
+      }
+    }
+    this.setState({
+      choreInfo: copy
+    })
+  }
+
   render() {
     const renderSignIn = this.state.renderSignIn;
     const choreInfo = this.state.choreInfo;
@@ -59,7 +80,7 @@ class App extends React.Component {
             </div>
             <div>
               {this.state.displayRoomie
-                && <Profile roomie={this.state.displayRoomie}/>
+                && <Profile roomie={this.state.displayRoomie} removeChore={this.removeChore}/>
               }
             </div>
           </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SignIn from '../SignIn/SignIn.jsx';
 import Roommates from '../Roommates/Roommates.jsx';
+import AssignChore from '../AssignChore/AssignChore.jsx';
 import Profile from '../Profile/Profile.jsx';
 
 
@@ -11,11 +12,14 @@ class App extends React.Component {
     this.toggleSignIn = this.toggleSignIn.bind(this);
     this.toggleRoomie = this.toggleRoomie.bind(this);
     this.removeChore = this.removeChore.bind(this);
+    this.addChore = this.addChore.bind(this);
     this.state = {
       renderSignIn: true,
       displayRoomie: null,
+      chosenForChore: '',
       choreInfo: {
         name: 'AirCnB HQ',
+        remainingChores: ['Clean tub', 'Wash windows','Organize cabinets','Clean yard','Shovel snow','Buy cleaning supplies','Fire Edward'],
         roommates: [
           {name: 'Diane',
            points: 36,
@@ -66,6 +70,21 @@ class App extends React.Component {
     })
   }
 
+  addChore(chore) {
+    var copy = Object.assign({}, this.state.choreInfo);
+    var rand = Math.floor(Math.random() * copy.roommates.length);
+    for (var i = 0; i < copy.roommates.length; i++) {
+      if (copy.roommates[i].name === copy.roommates[rand].name) {
+        copy.roommates[i].chores.push(chore)
+      }
+    }
+    this.setState({
+      choreInfo: copy,
+      chosenForChore: copy.roommates[rand].name
+    })
+    document.getElementsByClassName("submit")[0].value = ''
+  }
+
   render() {
     const renderSignIn = this.state.renderSignIn;
     const choreInfo = this.state.choreInfo;
@@ -77,6 +96,9 @@ class App extends React.Component {
           <div>
             <div>
               {choreInfo.roommates.map(roomie => <Roommates roomie={roomie} toggleRoomie={this.toggleRoomie}/>)}
+            </div>
+            <div>
+              <AssignChore addChore={this.addChore} chosenForChore={this.state.chosenForChore}/>
             </div>
             <div>
               {this.state.displayRoomie

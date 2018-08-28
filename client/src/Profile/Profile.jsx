@@ -11,9 +11,6 @@ const Profile = ({ roomie, removeChore }) => {
         {roomie.name}
       </div>
       <div>
-        {roomie.points} pts.
-      </div>
-      <div>
         {roomie.chores.map(chore => <Chore roomie={roomie} chore={chore} removeChore={removeChore}/>)}
       </div>
     </div>

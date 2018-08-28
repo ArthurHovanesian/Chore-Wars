@@ -2,14 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styles from './SignIn.css';
 
-const SignIn = ({ toggleSignIn }) => {
+const SignIn = ({ toggleSignIn, findRoom, addRoom }) => {
+
+  var room;
+
+  var find = (item) => {
+    room = item
+  }
 
   return (
     <div className={styles.SignIn}>
       <div className={styles.EnterHouseName}>Enter House Name</div>
       <div className={styles.inputField}>
-        <input type="text"/>
-        <button type="button" onClick={() => toggleSignIn()}>Go</button>
+        <div>
+          <input type="text" onChange={(e) => find(e.target.value)}/>
+          <button type="button" onClick={() => findRoom(room)}>Find</button>
+        </div>
+        <div>
+          <input type="text" onChange={(e) => find(e.target.value)}/>
+          <button type="button" onClick={() => addRoom(room)}>Add</button>
+        </div>
       </div>
     </div>
   )
